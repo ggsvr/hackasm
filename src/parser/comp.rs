@@ -1,0 +1,68 @@
+use crate::instr::CDest;
+use crate::instr::Comp;
+use crate::instr::Jump;
+pub static VALID_DESTS: phf::Map<&'static str, CDest> = phf::phf_map! {
+    "M" => CDest::M,
+    "D" => CDest::D,
+    "MD" => CDest::MD,
+    "A" => CDest::A,
+    "AM" => CDest::AM,
+    "AD" => CDest::AD,
+    "DM" => CDest::MD,
+    "MA" => CDest::AM,
+    "DA" => CDest::AD,
+    "AMD" => CDest::AMD,
+    "ADM" => CDest::AMD,
+    "DAM" => CDest::AMD,
+    "MDA" => CDest::AMD,
+    "DMA" => CDest::AMD,
+    "MAD" => CDest::AMD
+};
+pub static VALID_OPS: phf::Map<&'static str, Comp> = phf::phf_map! {
+    "0" => Comp::Zero,
+    "1" => Comp::One,
+    "-1" => Comp::MinusOne,
+    "D" => Comp::D,
+    "A" => Comp::A,
+    "!D" => Comp::NotD,
+    "!A" => Comp::NotA,
+    "-D" => Comp::MinusD,
+    "-A" => Comp::MinusA,
+    "D+1" => Comp::DPlusOne,
+    "A+1" => Comp::APlusOne,
+    "D-1" => Comp::DMinusOne,
+    "A-1" => Comp::AMinusOne,
+    "D+A" => Comp::DPlusA,
+    "D-A" => Comp::DMinusA,
+    "A-D" => Comp::AMinusD,
+    "D&A" => Comp::DAndA,
+    "D|A" => Comp::DOrA,
+
+    "M" => Comp::M,
+    "!M" => Comp::NotM,
+    "-M" => Comp::MinusM,
+    "M+1" => Comp::MPlusOne,
+    "M-1" => Comp::MMinusOne,
+    "D+M" => Comp::DPlusM,
+    "D-M" => Comp::DMinusM,
+    "M-D" => Comp::MMinusD,
+    "D&M" => Comp::DAndM,
+    "D|M" => Comp::DOrM,
+};
+pub static VALID_JMPS: phf::Map<&'static str, Jump> = phf::phf_map! {
+    "JGT" => Jump::JGT,
+    "JEQ" => Jump::JEQ,
+    "JGE" => Jump::JGE,
+    "JLT" => Jump::JLT,
+    "JNE" => Jump::JNE,
+    "JLE" => Jump::JLE,
+    "JMP" => Jump::JMP,
+
+    "jgt" => Jump::JGT,
+    "jeq" => Jump::JEQ,
+    "jge" => Jump::JGE,
+    "jlt" => Jump::JLT,
+    "jne" => Jump::JNE,
+    "jle" => Jump::JLE,
+    "jmp" => Jump::JMP,
+};
